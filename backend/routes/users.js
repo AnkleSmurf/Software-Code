@@ -9,10 +9,10 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
   const id = req.body.id;
-  const height = req.body.height,
-  const weight = req.body.weight,
-  const age = req.body.age,
-  const bodyfat = req.body.bodyfat
+  const height = req.body.height;
+  const weight = req.body.weight;
+  const age = req.body.age;
+  const bodyfat = req.body.bodyfat;
 
   const newUser = new User({id, height, weight, age, bodyfat});
 

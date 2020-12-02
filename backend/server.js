@@ -16,7 +16,7 @@ connection.once('open', () => {
     console.log('connected')
 })
 
-const exercisesRouter = require('./routes/exercises');
+const exercisesRouter = require('./routes/activity');
 const usersRouter = require('./routes/users');
 
 app.use('/exercises', exercisesRouter);

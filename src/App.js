@@ -1,24 +1,31 @@
-
+import React from "react";
+import Header from "./components/Header"
+import Welcome from "./components/Welcome"
+import Login from "./components/login"
+import Signup from "./components/Signup"
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App = () => {
 
-  const connectToDB = () => {
-    const MongoClient = require('mongodb').MongoClient;
-    const returned = null;
-    const uri = "mongodb+srv://ankles123:ankles123@biomedicalchallenge.tzbwe.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true });
-    client.connect(err => {
-      const collection = client.db("test").collection("devices");
-      returned = "Yeahhh"
-      client.close();
-      return returned;
-});
-  }
+
   return (
-    <div>
-      <h1>Hello</h1>
-      <p>{connectToDB()}</p>
+    <div className="origin-div">
+      <Header/>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Welcome></Welcome>
+          </Route>
+          
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <Route path="/signup">
+            <Signup></Signup>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

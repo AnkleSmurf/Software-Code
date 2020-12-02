@@ -17,7 +17,7 @@ router.route('/add').post((req, res) => {
   });
 
   newActivity.save()
-  .then(() => res.json('Activity entrey added!'))
+  .then(() => res.json('Activity entry added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
