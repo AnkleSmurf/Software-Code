@@ -1,5 +1,5 @@
 import {InputGroup, Button, FormControl} from "react-bootstrap"
-import react, {useState} from "react"
+import {useState} from "react"
 import "./css/login.css"
 
 const Login = () => {
