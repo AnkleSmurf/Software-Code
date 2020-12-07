@@ -13,16 +13,24 @@ router.route('/add').post((req, res) => {
   const weight = req.body.weight;
   const age = req.body.age;
   const bodyfat = req.body.bodyfat;
+  const username = req.body.username;
+  const password = req.body.password
 
-  const newUser = new User({id, height, weight, age, bodyfat});
+  const newUser = new User({id, height, weight, age, bodyfat, username, password});
 
   newUser.save()
     .then(() => res.json('User added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/username/:username').get((req, res) => {
+  User.find({username: req.params.username})
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
 router.route('/:id').get((req, res) => {
-  User.findById(req.params.id)
+  User.find({id: req.params.id})
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -41,6 +49,8 @@ router.route('/update/:id').post((req, res) => {
       user.weight = Number(req.body.weight);
       user.age = Number(req.body.age);
       user.bodyfat = Number(req.body.bodyfat)
+      user.username = String(req.body.username)
+      user.password = String(req.body.password)
 
       user.save()
         .then(() => res.json('User updated!'))

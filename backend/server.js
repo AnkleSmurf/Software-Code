@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-require('dotenv').config();
+require('dotenv').config({ path: 'config.env' });
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -24,4 +24,8 @@ app.use('/users', usersRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
+});
+
+app.on("error", error => {
+    throw new Error(`[Server]::ERROR:${error.message}`);
 });
