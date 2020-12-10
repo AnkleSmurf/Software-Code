@@ -23,6 +23,13 @@ const Signup = () => {
     const [bodyfatError, setBodyfatError] = useState("")
 
     const contentChecker = () => {
+        setUsernameError("")
+        setIdError("")
+        setPasswordError("")
+        setWeightError("")
+        setHeightError("")
+        setAgeError("")
+        setBodyfatError("")
         let status = true
         if (!username){
             setUsernameError("*This is a required field")

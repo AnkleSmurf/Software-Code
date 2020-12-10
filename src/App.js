@@ -1,33 +1,34 @@
-import React from "react";
-import Header from "./components/Header"
+import React, { useContext } from "react";
+import Header from "./components/header"
 import Welcome from "./components/Welcome"
 import Login from "./components/login"
 import Signup from "./components/Signup"
 import Dashboard from "./components/dashboard"
+import {AppContext} from "./components/lib/contextLib"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import  "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 
 const App = () => {
 
+  const { isAuthenticated } = useContext(AppContext);
 
   return (
     <div className="container">
-      <Header/>
       <Router>
+        <Header/>
         <Switch>
           <Route path="/" exact>
             <Welcome></Welcome>
           </Route>
-          
           <Route path="/login">
-            <Login></Login>
+            <Login/>
           </Route>
           <Route path="/signup">
             <Signup></Signup>
           </Route>
           <Route path="/dashboard">
-            <Dashboard></Dashboard>
+            <Dashboard/>
           </Route>
         </Switch>
       </Router>
