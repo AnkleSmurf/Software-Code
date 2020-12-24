@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This application has not been published yet, to run it locally:
+
+1. Clone the repository to local device
+2. Navigate to BioMedicalChallenge folder
+3. $cd biomed
+4. $npm start
+5. go to a new terminal and navigate to BioMedicalChallenge folder again
+6. $cd biomed
+7. $cd backend
+8. $node server.js
+
+Now the webpage should be running on localhost:3000 and the server API will be running on localhost:5000
+
 ## Available Scripts
 
 In the project directory, you can run:
