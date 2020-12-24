@@ -27,12 +27,10 @@ const Dashboard = () => {
             if (currentUser === "Admin"){
                 axios.get("http://localhost:5000/users").then(res => {
                     setInformation(res.data)
-                    console.log(information)
                 })
             } else {
                 axios.get(`http://localhost:5000/users/username/${currentUser}`).then(res => {
                     setInformation(res.data)
-                    console.log(information)
                 })
             }
         }
@@ -54,6 +52,21 @@ const Dashboard = () => {
                             <li> Age: {attribute.age}</li>
                             <li> Bodyfat %: {attribute.bodyfat}</li>
                         </ul>
+                        <div>
+                            <button onClick={() => {
+                                fetch("/init").then(response => 
+                                    response.json().then(data =>
+                                        console.log(data)))
+                            }}> 
+                               Test API 
+                            </button>
+                            <button onClick={() => {
+                                fetch("/get_image").then(response => 
+                                    console.log(response))
+                            }}> 
+                               Test API PNG 
+                            </button>
+                        </div>
                     </Jumbotron>
                 </div>
             )
