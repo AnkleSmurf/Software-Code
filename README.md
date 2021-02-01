@@ -11,7 +11,8 @@ This application has not been published yet, to run it locally:
 
 Now the webpage should be running on localhost:3000 and the server API will be running on localhost:5000
 
-Some background: This is a MERN stack webapp composed of three main components, the front-end, back-end, and data-processor
+Some background: This is a MERN stack webapp composed of three main components, the front-end, back-end, and data-processor.
+The front-end code is stored in the src folder, the Mongoose backend code is stored in the backend folder, aand the data-processor code is stored in the python folder.
 
 Workflow: 
 - The data is first received through MQTT request on AWS IoT, which is linked to a AWS EC2 Lambda function that processes the csv data file. (The code for the lambda function can be found in the Python folder.
