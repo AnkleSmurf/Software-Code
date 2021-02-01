@@ -54,17 +54,9 @@ const Dashboard = () => {
                         </ul>
                         <div>
                             <button onClick={() => {
-                                fetch("/init").then(response => 
-                                    response.json().then(data =>
-                                        console.log(data)))
+                                history.push(`/report/${attribute.id}`)
                             }}> 
-                               Test API 
-                            </button>
-                            <button onClick={() => {
-                                fetch("/get_image").then(response => 
-                                    console.log(response))
-                            }}> 
-                               Test API PNG 
+                               View Data
                             </button>
                         </div>
                     </Jumbotron>

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import Header from "./components/header"
+import Header from "./components/Header"
 import Welcome from "./components/Welcome"
 import Login from "./components/login"
 import Signup from "./components/Signup"
 import Dashboard from "./components/dashboard"
+import Report from "./components/report"
 import {AppContext} from "./components/lib/contextLib"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import  "bootstrap/dist/css/bootstrap.min.css"
@@ -27,6 +28,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <Signup></Signup>
+          </Route>
+          <Route path="/report/:id">
+            <Report></Report>
           </Route>
           <Route path="/dashboard">
             <Dashboard/>

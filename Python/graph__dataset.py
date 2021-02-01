@@ -1,5 +1,8 @@
 from bokeh.plotting import figure, show, save, output_file
 from smurf import DataPoint, DataFile
+from db import upload
+import uuid
+from bokeh.io import export_png
 
 """ Intelligent Injury Detection - Dynamic graphing from an array of numbers."""
 
@@ -88,28 +91,23 @@ for key in smurf.sortedData:
              size=30, legend_label=little_toe_legend)
     p.circle(x=[5.8], y=[28], fill_color=big_toe, line_color=big_toe,
              size=45, legend_label=big_toe_legend)
+    typeOfFile = ""
 
     if key == 'initialContact':
-        output_file('initialContact.html')
-        save(p)
-        show(p)
+        typeOfFile = 'initialContact.html'
     if key == 'loadingResponse':
-        output_file('loadingResponse.html')
-        save(p)
-        show(p)
+        typeOfFile = 'loadingResponse.html'
     if key == 'midStance':
-        output_file('midStance.html')
-        save(p)
-        show(p)
+        typeOfFile = 'midStance.html'
     if key == 'terminalStance':
-        output_file('terminalStance.html')
-        save(p)
-        show(p)
+        typeOfFile = 'terminalStance.html'
     if key == 'preSwing':
-        output_file('preSwing.html')
-        save(p)
-        show(p)
+        typeOfFile = 'preSwing.html'
     if key == 'swingPhase':
-        output_file('swingPhase.html')
-        save(p)
-        show(p)
+        typeOfFile = 'swingPhase.html'
+    unique_filename = str(uuid.uuid4())
+    # output_file(unique_filename)
+    export_png(p, filename=unique_filename)
+    upload(unique_filename, typeOfFile)
+    save(p)
+    show(p)
