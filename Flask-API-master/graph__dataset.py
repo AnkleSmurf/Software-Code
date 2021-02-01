@@ -89,6 +89,27 @@ for key in smurf.sortedData:
     p.circle(x=[5.8], y=[28], fill_color=big_toe, line_color=big_toe,
              size=45, legend_label=big_toe_legend)
 
-    output_file('pressure.html')
-    save(p)
-    show(p)
+    if key == 'initialContact':
+        output_file('initialContact.html')
+        save(p)
+        show(p)
+    if key == 'loadingResponse':
+        output_file('loadingResponse.html')
+        save(p)
+        show(p)
+    if key == 'midStance':
+        output_file('midStance.html')
+        save(p)
+        show(p)
+    if key == 'terminalStance':
+        output_file('terminalStance.html')
+        save(p)
+        show(p)
+    if key == 'preSwing':
+        output_file('preSwing.html')
+        save(p)
+        show(p)
+    if key == 'swingPhase':
+        output_file('swingPhase.html')
+        save(p)
+        show(p)
