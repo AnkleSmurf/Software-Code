@@ -10,12 +10,12 @@ class DataPoint:
 class DataFile:
     def __init__(self, filename):
         self.inputFile = filename
-        self.midheelVoltage = 0
-        self.midballVoltage = 0
-        self.midbigVoltage = 0
-        self.midlittleVoltage = 0
-        self.dataPoints = []
-        self.sortedData = {}
+        self.midheelVoltage = 0 # average voltage for all data points (heel)
+        self.midballVoltage = 0 # '' (ball)
+        self.midbigVoltage = 0 # '' (big toe)
+        self.midlittleVoltage = 0 # '' (little toe)
+        self.dataPoints = [] # list of all data points
+        self.sortedData = {} # dictionary to hold 6 lists of data points corresponding to each stage of the gait cycle
     
     def collectData(self):
         i = 0
@@ -34,13 +34,13 @@ class DataFile:
                 self.midbigVoltage += bigtoeVoltage
                 self.midlittleVoltage += littletoeVoltage
                 i += 1
-            self.midheelVoltage /= i
+            self.midheelVoltage /= i # dividing by number of data points to get average value for each parameter
             self.midballVoltage /= i
             self.midbigVoltage /= i
             self.midlittleVoltage /= i
     
     def sortData(self):
-        initialContact = []
+        initialContact = [] # lists of data points corresponding to each phase of the gait cycle
         loadingResponse = []
         midStance = []
         terminalStance = []
@@ -69,14 +69,8 @@ class DataFile:
             else:
                 errors += 1
 
-        # self.sortedData['initialContact'] = initialContact
-        # self.sortedData['loadingResponse'] = loadingResponse
-        # self.sortedData['midStance'] = midStance
-        # self.sortedData['terminalStance'] = terminalStance
-        # self.sortedData['preSwing'] = preSwing
-        # self.sortedData['swingPhase'] = swingPhase
-        iCAverage = [0, 0, 0, 0]
-        lRAverage = [0, 0, 0, 0]
+        iCAverage = [0, 0, 0, 0] # average voltage for each of the sensors (heel, ball, big toe, little toe) for
+        lRAverage = [0, 0, 0, 0] # all data points in each stage of the gait cycle
         mSAverage = [0, 0, 0, 0]
         tSAverage = [0, 0, 0, 0]
         pSAverage = [0, 0, 0, 0]
@@ -111,18 +105,12 @@ class DataFile:
             sPAverage[1] += swingPhase[i].ballVoltage
             sPAverage[2] += swingPhase[i].bigtoeVoltage
             sPAverage[3] += swingPhase[i].littletoeVoltage
-        iCAverage = [num / len(initialContact) for num in iCAverage]
-        lRAverage = [num / len(loadingResponse) for num in lRAverage]
+        iCAverage = [num / len(initialContact) for num in iCAverage] # dividing by number of data points in each stage of gait cycle
+        lRAverage = [num / len(loadingResponse) for num in lRAverage] # to get average value for each parameter
         mSAverage = [num / len(midStance) for num in mSAverage]
         tSAverage = [num / len(terminalStance) for num in tSAverage]
         pSAverage = [num / len(preSwing) for num in pSAverage]
         sPAverage = [num / len(swingPhase) for num in sPAverage]
-        print(iCAverage)
-        print(lRAverage)
-        print(mSAverage)
-        print(tSAverage)
-        print(pSAverage)
-        print(sPAverage)
         self.sortedData['initialContact'] = iCAverage
         self.sortedData['loadingResponse'] = lRAverage
         self.sortedData['midStance'] = mSAverage
